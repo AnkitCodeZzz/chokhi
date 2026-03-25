@@ -1714,6 +1714,15 @@
       padding: 40px 36px;
       border: 1px solid var(--border-light);
     }
+    .artisan-process-icon {
+      width: 130px; height: 130px;
+      display: flex; align-items: center; justify-content: center;
+      margin: 0 auto 10px;
+    }
+    .artisan-process-icon img {
+      width: 120px; height: 120px; object-fit: contain;
+      display: block;
+    }
     .artisan-process-num {
       font-family: 'Lora', serif; font-style: italic;
       font-size: 36px; color: var(--beige); margin-bottom: 12px;
@@ -2158,6 +2167,8 @@
       .artisan-story-section p { font-size: 16px; }
       .artisan-process-grid { padding: 0 16px; margin-bottom: 48px; }
       .artisan-process-item { padding: 28px 20px; }
+      .artisan-process-icon { width: 112px; height: 112px; margin-bottom: 6px; }
+      .artisan-process-icon img { width: 104px; height: 104px; }
       .artisan-process-num { font-size: 28px; }
       .account-sidebar {
         padding: 16px 16px;
@@ -3478,7 +3489,7 @@
   <div class="artisans-grid">
     <div class="artisan-card" onclick="goTo('artisan-detail')">
       <div class="artisan-card-img">
-        <img src="Craftprocess-Carousel-handweaving1.jpg" alt="Rekha Bai">
+        <img src="rekha bai.png" alt="Rekha Bai">
       </div>
       <span class="artisan-craft">Hand Weaving</span>
       <p class="artisan-name">Rekha Bai</p>
@@ -3486,7 +3497,7 @@
     </div>
     <div class="artisan-card" onclick="goTo('artisan-detail')">
       <div class="artisan-card-img">
-        <img src="Craftprocess-Carousel-silkreeling1.jpeg" alt="Ramesh Kumar">
+        <img src="ramesh kumar.png" alt="Ramesh Kumar">
       </div>
       <span class="artisan-craft">Silk Reeling</span>
       <p class="artisan-name">Ramesh Kumar</p>
@@ -3494,7 +3505,7 @@
     </div>
     <div class="artisan-card" onclick="goTo('artisan-detail')">
       <div class="artisan-card-img">
-        <img src="Craftprocess-Carousel-naturaldyeing1.jpg" alt="Sunita Devi">
+        <img src="sunita devi.png" alt="Sunita Devi">
       </div>
       <span class="artisan-craft">Natural Dyeing</span>
       <p class="artisan-name">Sunita Devi</p>
@@ -3502,23 +3513,23 @@
     </div>
     <div class="artisan-card" onclick="goTo('artisan-detail')">
       <div class="artisan-card-img">
-        <img src="Craftprocess-Carousel-handweaving2.jpg" alt="Mohan Lal">
+        <img src="mohan lal.png" alt="Mohan Lal">
       </div>
-      <span class="artisan-craft">Zari Work</span>
+      <span class="artisan-craft">Motif Hand Blocking</span>
       <p class="artisan-name">Mohan Lal</p>
       <p class="artisan-location">Maheshwar, Madhya Pradesh · 19 years</p>
     </div>
     <div class="artisan-card" onclick="goTo('artisan-detail')">
       <div class="artisan-card-img">
-        <img src="Craftprocess-Carousel-silkreeling2.jpeg" alt="Geeta Sharma">
+        <img src="sukhdev sharma.png" alt="Sukhdev Sharma">
       </div>
-      <span class="artisan-craft">Silk Reeling</span>
-      <p class="artisan-name">Geeta Sharma</p>
+      <span class="artisan-craft">Darning for Phulkari</span>
+      <p class="artisan-name">Sukhdev Sharma</p>
       <p class="artisan-location">Chanderi, Madhya Pradesh · 12 years</p>
     </div>
     <div class="artisan-card" onclick="goTo('artisan-detail')">
       <div class="artisan-card-img">
-        <img src="Craftprocess-Carousel-naturaldyeing2.jpg" alt="Ratan Singh">
+        <img src="ratan singh.png" alt="Ratan Singh">
       </div>
       <span class="artisan-craft">Natural Dyeing</span>
       <p class="artisan-name">Ratan Singh</p>
@@ -3575,7 +3586,7 @@
 
   <div class="artisan-detail-hero">
     <div class="artisan-detail-img">
-      <img src="Craftprocess-Carousel-handweaving1.jpg" alt="Rekha Bai">
+      <img src="rekha bai.png" alt="Rekha Bai">
     </div>
     <div class="artisan-detail-info">
       <span class="section-label">Hand Weaving · 24 years</span>
@@ -3596,16 +3607,25 @@
 
   <div class="artisan-process-grid">
     <div class="artisan-process-item">
+      <div class="artisan-process-icon">
+        <img src="Icon-Warping.svg" alt="Warping">
+      </div>
       <div class="artisan-process-num">01</div>
       <p class="artisan-process-title">Warping</p>
       <p class="artisan-process-desc">Threading the loom with individual silk strands — up to 3,200 threads per saree — stretched precisely to maintain an even tension throughout the weave.</p>
     </div>
     <div class="artisan-process-item">
+      <div class="artisan-process-icon">
+        <img src="Icon-Pattern.svg" alt="Pattern Setting">
+      </div>
       <div class="artisan-process-num">02</div>
       <p class="artisan-process-title">Pattern Setting</p>
       <p class="artisan-process-desc">Tying the jacquard or dobby cards that will guide the pattern. Rekha's reversible borders require a separate set of instructions for each side.</p>
     </div>
     <div class="artisan-process-item">
+      <div class="artisan-process-icon">
+        <img src="Icon-Weaving2.svg" alt="Weaving">
+      </div>
       <div class="artisan-process-num">03</div>
       <p class="artisan-process-title">Weaving</p>
       <p class="artisan-process-desc">The shuttle passes back and forth, interlacing the weft threads with the warp. At full pace, Rekha completes roughly four inches of cloth per hour.</p>
