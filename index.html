@@ -510,6 +510,103 @@
       font-size: 11.5px; color: rgba(255,255,255,0.25); letter-spacing: 0.06em;
     }
 
+    /* ─── SEARCH OVERLAY ─────────────────────────────────────── */
+    .search-overlay {
+      display: none; position: fixed; inset: 0; z-index: 9998;
+      background: rgba(245,240,235,0.97);
+      padding-top: 80px;
+    }
+    .search-overlay.open { display: block; }
+    .search-overlay-inner {
+      max-width: 640px; margin: 0 auto; padding: 0 24px;
+    }
+    .search-bar-wrap {
+      display: flex; align-items: center; gap: 12px;
+      border-bottom: 2px solid var(--dark-mid);
+      padding-bottom: 12px; margin-bottom: 32px;
+    }
+    .search-bar-input {
+      flex: 1; background: none; border: none; outline: none;
+      font-family: 'Lora', serif; font-size: 24px; color: var(--text);
+    }
+    .search-bar-input::placeholder { color: var(--text-muted); }
+    .search-bar-close {
+      background: none; border: none; font-size: 32px;
+      color: var(--text-mid); cursor: pointer; line-height: 1;
+    }
+    .search-suggest-label {
+      font-size: 11px; letter-spacing: 0.1em; text-transform: uppercase;
+      color: var(--text-muted); margin-bottom: 12px;
+    }
+    .search-chips { display: flex; flex-wrap: wrap; gap: 8px; }
+    .search-chip {
+      padding: 8px 18px; border: 1px solid var(--border);
+      font-family: 'Alegreya Sans', sans-serif; font-size: 13px;
+      color: var(--text-mid); cursor: pointer; transition: all 0.2s;
+    }
+    .search-chip:hover { border-color: var(--rust); color: var(--rust); }
+    .search-craft-links {
+      display: flex; flex-direction: column; gap: 10px;
+    }
+    .search-craft-links a {
+      font-family: 'Alegreya Sans', sans-serif; font-size: 15px;
+      color: var(--text); cursor: pointer; text-decoration: none;
+      transition: color 0.2s;
+    }
+    .search-craft-links a:hover { color: var(--rust); }
+
+    /* ─── MODAL ──────────────────────────────────────────────── */
+    .modal-overlay {
+      display: none; position: fixed; inset: 0; z-index: 9999;
+      background: rgba(0,0,0,0.5); align-items: center; justify-content: center;
+      padding: 20px;
+    }
+    .modal-overlay.open { display: flex; }
+    .modal-content {
+      background: var(--cream); max-width: 640px; width: 100%;
+      max-height: 85vh; overflow-y: auto;
+      padding: 48px; position: relative;
+    }
+    .modal-close {
+      position: absolute; top: 16px; right: 20px;
+      background: none; border: none; font-size: 28px; color: var(--text-mid);
+      cursor: pointer; line-height: 1;
+    }
+    .modal-title {
+      font-family: 'Lora', serif; font-size: 24px; color: var(--text);
+      margin-bottom: 4px;
+    }
+    .size-tabs {
+      display: flex; gap: 0; border-bottom: 1px solid var(--border-light);
+      margin-bottom: 24px;
+    }
+    .size-tab {
+      padding: 10px 24px; background: none; border: none; border-bottom: 2px solid transparent;
+      font-family: 'Alegreya Sans', sans-serif; font-size: 13px;
+      letter-spacing: 0.08em; text-transform: uppercase; color: var(--text-mid);
+      cursor: pointer; transition: all 0.2s;
+    }
+    .size-tab.active { color: var(--text); border-bottom-color: var(--rust); }
+    .size-panel { display: none; }
+    .size-panel.active { display: block; }
+    .size-table {
+      width: 100%; border-collapse: collapse; margin-bottom: 20px;
+      font-family: 'Alegreya Sans', sans-serif; font-size: 14px;
+    }
+    .size-table th {
+      text-align: left; padding: 10px 12px; font-size: 11px;
+      letter-spacing: 0.08em; text-transform: uppercase; color: var(--text-mid);
+      border-bottom: 1px solid var(--border);
+    }
+    .size-table td {
+      padding: 12px; border-bottom: 1px solid var(--border-light);
+      color: var(--text);
+    }
+    .size-note {
+      font-size: 13px; color: var(--text-mid); line-height: 1.7;
+      padding: 12px 0;
+    }
+
     /* ─── SEARCH RESULTS PAGE ────────────────────────────────── */
     .srp-wrap { display: grid; grid-template-columns: 216px 1fr; }
 
@@ -1253,31 +1350,26 @@
     }
     .process-step:not(:last-child)::after {
       content: ''; position: absolute;
-      top: 14px; left: 60%; width: 80%; height: 1px;
+      top: 26px; left: 60%; width: 80%; height: 1px;
       background: var(--border);
     }
     .process-icon {
-      width: 28px; height: 28px; border: 1px solid var(--border);
-      border-radius: 50%; background: #fff; margin: 0 auto 6px;
+      width: 52px; height: 52px; margin: 0 auto 8px;
       display: flex; align-items: center; justify-content: center;
-      font-size: 12px; position: relative; z-index: 1;
+      position: relative; z-index: 1;
     }
-    .process-icon.done { background: var(--dark); border-color: var(--dark); }
+    .process-icon.done { }
     .process-name {
       font-size: 10px; letter-spacing: 0.06em; color: var(--text-mid);
       text-transform: uppercase; display: block; margin-bottom: 2px;
     }
     .process-time { font-size: 10px; color: var(--text-muted); }
-    .process-icon-img { width: 20px; height: 20px; filter: brightness(10); }
-    .process-icon.done .process-icon-img { filter: brightness(10); }
-    .pdp-time-note {
-      display: flex; align-items: center; gap: 10px;
-      margin-top: 20px; padding: 14px 18px;
-      background: rgba(139,115,85,0.04); border-left: 2px solid var(--rust);
-      font-size: 13px; color: var(--text-mid); line-height: 1.6;
-      font-style: italic;
+    .process-icon-img { width: 48px; height: 48px; object-fit: contain; }
+    .pdp-uniqueness-note {
+      margin-top: 16px; text-align: center;
+      font-family: 'Caveat', cursive; font-size: 16px; color: var(--rust);
+      opacity: 0.85;
     }
-    .pdp-time-icon { width: 20px; height: 20px; flex-shrink: 0; opacity: 0.6; }
 
     /* Accordions */
     .pdp-accordion { border-top: 1px solid var(--border-light); }
@@ -2117,7 +2209,7 @@
   <div class="nav-logo" onclick="goTo('home')">chokhi</div>
 
   <div class="nav-icons">
-    <div class="nav-icon" onclick="goTo('search')" title="Search">
+    <div class="nav-icon" onclick="openSearch()" title="Search">
       <svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round">
         <circle cx="8.5" cy="8.5" r="5.5"/><line x1="13" y1="13" x2="18" y2="18"/>
       </svg>
@@ -2144,6 +2236,31 @@
   </div>
 </nav>
 
+  <!-- Search Overlay -->
+  <div class="search-overlay" id="search-overlay">
+    <div class="search-overlay-inner">
+      <div class="search-bar-wrap">
+        <input type="text" class="search-bar-input" id="search-input" placeholder="Search for sarees, crafts, artisans..." autofocus>
+        <button class="search-bar-close" onclick="closeSearch()">&times;</button>
+      </div>
+      <div class="search-suggestions">
+        <p class="search-suggest-label">Popular Searches</p>
+        <div class="search-chips">
+          <span class="search-chip" onclick="doSearch('Maheshwari Silk')">Maheshwari Silk</span>
+          <span class="search-chip" onclick="doSearch('Phulkari Dupatta')">Phulkari Dupatta</span>
+          <span class="search-chip" onclick="doSearch('Banarasi Saree')">Banarasi Saree</span>
+          <span class="search-chip" onclick="doSearch('Wedding Collection')">Wedding Collection</span>
+          <span class="search-chip" onclick="doSearch('Under ₹10,000')">Under ₹10,000</span>
+        </div>
+        <p class="search-suggest-label" style="margin-top:24px;">Browse by Craft</p>
+        <div class="search-craft-links">
+          <a onclick="goToSearchFiltered('maheshwari')">Maheshwari Silk →</a>
+          <a onclick="goToSearchFiltered('phulkari')">Phulkari →</a>
+          <a onclick="goToSearchFiltered('banarasi')">Banarasi →</a>
+        </div>
+      </div>
+    </div>
+  </div>
 
 <!-- ═══════════════════════════════════════════════════════════════ -->
 <!-- PAGE: HOME                                                      -->
@@ -2185,19 +2302,19 @@
     <h2>Discover Our Crafts</h2>
     <p class="section-sub">Three traditions, three stories</p>
     <div class="discover-grid">
-      <div class="discover-card" onclick="goTo('search')">
+      <div class="discover-card" onclick="goToSearchFiltered('maheshwari')">
         <div class="discover-card-img"><img src="Maheshwari Silk Craft Main Image.png" alt="Maheshwari Silk"></div>
         <h3>Maheshwari Silk</h3>
         <p>Light yet lustrous weaves born on the banks of the Narmada, prized for their reversible borders and quiet opulence.</p>
         <span class="discover-card-link">Explore Craft →</span>
       </div>
-      <div class="discover-card" onclick="goTo('search')">
+      <div class="discover-card" onclick="goToSearchFiltered('phulkari')">
         <div class="discover-card-img"><img src="Phulkari Craft Main Image.png" alt="Phulkari"></div>
         <h3>Phulkari</h3>
         <p>Gardens of thread blooming across fabric — each stitch placed by hand in Punjab's centuries-old tradition of joyful, vivid embroidery.</p>
         <span class="discover-card-link">Explore Craft →</span>
       </div>
-      <div class="discover-card" onclick="goTo('search')">
+      <div class="discover-card" onclick="goToSearchFiltered('banarasi')">
         <div class="discover-card-img"><img src="Banarasi Craft Main Image.png" alt="Banarasi"></div>
         <h3>Banarasi</h3>
         <p>Grand brocades woven with gold and silver zari, carrying the ceremonial weight of Varanasi's centuries-old loom traditions.</p>
@@ -2438,7 +2555,7 @@
       <span class="section-label">three stories, three legacies</span>
       <h3>Maheshwari Silk</h3>
       <p>Woven on pit looms along the Narmada's banks, Maheshwari silk is recognised by its distinctive reversible border. The weave is tight yet drapes with unparalleled grace — equally suited to ceremony and everyday elegance.</p>
-      <a class="btn-outline btn-gold" onclick="goTo('search')">Explore Collection &nbsp;→</a>
+      <a class="btn-outline btn-gold" onclick="goToSearchFiltered('maheshwari')">Explore Collection &nbsp;→</a>
     </div>
   </div>
 
@@ -2580,6 +2697,10 @@
           <div class="filter-row" onclick="toggleCheck(this)">
             <div class="filter-row-l"><div class="f-check"></div><span class="f-label">Banarasi Silk</span></div>
             <span class="f-count">22</span>
+          </div>
+          <div class="filter-row" onclick="toggleCheck(this)">
+            <div class="filter-row-l"><div class="f-check"></div><span class="f-label">Phulkari</span></div>
+            <span class="f-count">16</span>
           </div>
           <div class="filter-row" onclick="toggleCheck(this)">
             <div class="filter-row-l"><div class="f-check"></div><span class="f-label">Georgette</span></div>
@@ -2914,7 +3035,7 @@
       <!-- Size -->
       <div class="pdp-size-head">
         <span class="pdp-size-label">Size</span>
-        <span class="pdp-size-guide">Size Guide</span>
+        <span class="pdp-size-guide" onclick="document.getElementById('size-guide-modal').classList.add('open')">Size Guide</span>
       </div>
       <div class="pdp-sizes">
         <button class="size-btn active">S</button>
@@ -2949,24 +3070,24 @@
         <span class="pdp-process-label">How this piece is made</span>
         <div class="process-steps">
           <div class="process-step">
-            <div class="process-icon done">
+            <div class="process-icon">
               <img src="Icon-Spinning.svg" alt="Spinning" class="process-icon-img">
             </div>
             <span class="process-name">Spinning</span>
             <span class="process-time">2 days</span>
           </div>
           <div class="process-step">
-            <div class="process-icon done">
+            <div class="process-icon">
               <img src="Icon-Dyeing.svg" alt="Dyeing" class="process-icon-img">
             </div>
             <span class="process-name">Dyeing</span>
             <span class="process-time">1 day</span>
           </div>
           <div class="process-step">
-            <div class="process-icon" style="border-color:var(--rust)">
+            <div class="process-icon">
               <img src="Icon-Weaving.svg" alt="Weaving" class="process-icon-img">
             </div>
-            <span class="process-name" style="color:var(--rust)">Weaving</span>
+            <span class="process-name">Weaving</span>
             <span class="process-time">3–5 days</span>
           </div>
           <div class="process-step">
@@ -2977,10 +3098,7 @@
             <span class="process-time">1 day</span>
           </div>
         </div>
-        <div class="pdp-time-note">
-          <img src="Icon-Speed.svg" alt="" class="pdp-time-icon">
-          <span>This piece takes 5–7 days to weave from start to finish. No two are ever exactly the same.</span>
-        </div>
+        <p class="pdp-uniqueness-note">No two pieces are ever exactly the same.</p>
       </div>
 
       <hr class="pdp-divider">
@@ -3816,6 +3934,55 @@
   </footer>
 </div><!-- /page-about -->
 
+<!-- SIZE GUIDE MODAL -->
+<div class="modal-overlay" id="size-guide-modal" onclick="if(event.target===this)this.classList.remove('open')">
+  <div class="modal-content size-guide-content">
+    <button class="modal-close" onclick="this.closest('.modal-overlay').classList.remove('open')">&times;</button>
+    <h2 class="modal-title">Size Guide</h2>
+    <p class="modal-subtitle" style="font-family:'Caveat',cursive; color:var(--rust); font-size:15px; margin-bottom:20px;">Every drape tells a different story</p>
+
+    <div class="size-tabs">
+      <button class="size-tab active" onclick="switchSizeTab(this,'saree')">Sarees</button>
+      <button class="size-tab" onclick="switchSizeTab(this,'dupatta')">Dupattas</button>
+    </div>
+
+    <div class="size-panel active" data-size="saree">
+      <table class="size-table">
+        <thead>
+          <tr><th>Size</th><th>Length</th><th>Width</th><th>Blouse Piece</th><th>Best For</th></tr>
+        </thead>
+        <tbody>
+          <tr><td>S</td><td>5.5 m</td><td>44 in</td><td>0.8 m</td><td>Petite frames</td></tr>
+          <tr><td>M</td><td>6.0 m</td><td>46 in</td><td>0.8 m</td><td>Most common</td></tr>
+          <tr><td>L</td><td>6.3 m</td><td>47 in</td><td>0.9 m</td><td>Taller frames</td></tr>
+          <tr><td>XL</td><td>6.5 m</td><td>48 in</td><td>1.0 m</td><td>Full drape</td></tr>
+        </tbody>
+      </table>
+      <div class="size-note">
+        <strong>How to measure:</strong> Traditional sarees are measured unstitched. Length includes the pallu and blouse piece. Width is measured selvage to selvage.
+      </div>
+      <div class="size-note" style="margin-top:8px;">
+        <em style="color:var(--rust)">Handloom sizing may vary by ±2 inches — this is the nature of handcraft.</em>
+      </div>
+    </div>
+
+    <div class="size-panel" data-size="dupatta">
+      <table class="size-table">
+        <thead>
+          <tr><th>Size</th><th>Length</th><th>Width</th><th>Best For</th></tr>
+        </thead>
+        <tbody>
+          <tr><td>Standard</td><td>2.25 m</td><td>36 in</td><td>Everyday wear</td></tr>
+          <tr><td>Long</td><td>2.5 m</td><td>40 in</td><td>Draping styles</td></tr>
+          <tr><td>Bridal</td><td>2.75 m</td><td>44 in</td><td>Wedding &amp; occasion</td></tr>
+        </tbody>
+      </table>
+      <div class="size-note">
+        <em style="color:var(--rust)">Phulkari dupattas are hand-embroidered — dimensions may vary slightly with the density of the needlework.</em>
+      </div>
+    </div>
+  </div>
+</div>
 
 <!-- ═══════════════════════════════════════════════════════════════ -->
 <!-- PAGE: ORDER CONFIRMATION                                        -->
@@ -4128,6 +4295,93 @@
       document.querySelectorAll('.payment-option').forEach(o => o.classList.remove('selected'));
       this.classList.add('selected');
     });
+  });
+
+  /* ── Size Guide Tabs ── */
+  function switchSizeTab(btn, tabName) {
+    btn.closest('.size-guide-content').querySelectorAll('.size-tab').forEach(t => t.classList.remove('active'));
+    btn.classList.add('active');
+    btn.closest('.size-guide-content').querySelectorAll('.size-panel').forEach(p => {
+      p.classList.toggle('active', p.dataset.size === tabName);
+    });
+  }
+
+  /* ── Search Overlay ── */
+  function openSearch() {
+    document.getElementById('search-overlay').classList.add('open');
+    setTimeout(() => document.getElementById('search-input').focus(), 100);
+  }
+  function closeSearch() {
+    document.getElementById('search-overlay').classList.remove('open');
+    document.getElementById('search-input').value = '';
+  }
+  function doSearch(query) {
+    closeSearch();
+    // Update SRP to show general search (no pre-selected craft filter)
+    document.querySelector('.srp-query').textContent = '\u201C' + query + '\u201D';
+    // Reset filters - show all products, remove active craft filter
+    const filterChip = document.querySelector('#page-search .filter-chip');
+    if (filterChip) filterChip.style.display = 'none';
+    const activeFiltersHead = document.querySelector('#page-search .active-filters-head');
+    if (activeFiltersHead) activeFiltersHead.style.display = 'none';
+    // Uncheck all craft filters
+    document.querySelectorAll('#page-search .f-check.on').forEach(c => c.classList.remove('on'));
+    // Show all products
+    document.querySelectorAll('#page-search .prod-card').forEach(c => c.style.display = '');
+    document.querySelector('.srp-count').textContent = '10 pieces found, woven with intention';
+    goTo('search');
+  }
+  function goToSearchFiltered(craft) {
+    closeSearch();
+    const craftNames = {
+      maheshwari: 'Maheshwari Silk',
+      phulkari: 'Phulkari',
+      banarasi: 'Banarasi'
+    };
+    const craftLabel = craftNames[craft] || craft;
+    // Update SRP heading
+    document.querySelector('.srp-query').textContent = '\u201C' + craftLabel + ' Saree\u201D';
+    // Show filter chip
+    const filterChip = document.querySelector('#page-search .filter-chip');
+    if (filterChip) {
+      filterChip.style.display = '';
+      filterChip.innerHTML = craftLabel + ' <span class="filter-chip-x">\u00D7</span>';
+    }
+    const activeFiltersHead = document.querySelector('#page-search .active-filters-head');
+    if (activeFiltersHead) activeFiltersHead.style.display = '';
+    // Show/hide products based on craft
+    const products = document.querySelectorAll('#page-search .prod-card');
+    let shown = 0;
+    products.forEach(card => {
+      const img = card.querySelector('img');
+      if (!img) return;
+      const src = img.getAttribute('src').toLowerCase();
+      const matchesCraft = src.includes(craft.toLowerCase());
+      card.style.display = matchesCraft ? '' : 'none';
+      if (matchesCraft) shown++;
+    });
+    document.querySelector('.srp-count').textContent = shown + ' pieces found, woven with intention';
+    // Check the matching craft filter
+    document.querySelectorAll('#page-search .f-check.on').forEach(c => c.classList.remove('on'));
+    const filterRows = document.querySelectorAll('#page-search .filter-row');
+    filterRows.forEach(row => {
+      const label = row.querySelector('.f-label');
+      if (label && label.textContent.toLowerCase().includes(craft.toLowerCase())) {
+        row.querySelector('.f-check').classList.add('on');
+      }
+    });
+    goTo('search');
+  }
+
+  // Handle Enter key in search
+  document.addEventListener('keydown', function(e) {
+    if (e.key === 'Enter' && document.getElementById('search-overlay').classList.contains('open')) {
+      const val = document.getElementById('search-input').value.trim();
+      if (val) doSearch(val);
+    }
+    if (e.key === 'Escape' && document.getElementById('search-overlay').classList.contains('open')) {
+      closeSearch();
+    }
   });
 
 </script>
